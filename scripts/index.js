@@ -9,7 +9,7 @@ async function run() {
 
         const execOptions = { cwd: appDir };
 
-        await core.group('Getting dependencies', () => exec.exec('pub', ['get'], execOptions));
+        await core.group('Getting dependencies', () => exec.exec('dart', ['pub', 'get'], execOptions));
 
         execOptions.ignoreReturnCode = true;
         execOptions.silent = true;
