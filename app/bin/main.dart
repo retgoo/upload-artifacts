@@ -24,7 +24,8 @@ void main(List<String> args) async {
   final id = gaction.Input('id', isRequired: true, canBeEmpty: false);
   logger.info('id: ${id.value}');
 
-  final srcPath = path.value;
+  final workspacePath = Platform.environment["GITHUB_WORKSPACE"];
+  final srcPath = "$workspacePath/${path.value}";
 
   File data;
   if (zip.value == 'true') {
