@@ -22,9 +22,7 @@ inputs:
     required: false
     default: ""
 runs:
-  using: "composite"
-  steps:
-    - name: "Get dart packages"
-      run: dart pub get
-    - name: "Zip and Deploy"
-      run: dart bin/deploy.dart ${{ inputs.id }} ${{ inputs.zip }} ${{ inputs.output }} ${{ inputs.root }} ${{ inputs.path }}
+  using: "node12"
+  pre: "scripts/setup.js" # Delete this line to not run the setup script
+  main: "scripts/index.js"
+  post: "scripts/cleanup.js" # Delete this line to not run the cleanup script

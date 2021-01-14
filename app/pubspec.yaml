@@ -11,3 +11,4 @@ dependencies:
   dio: ^3.0.10
   archive: ^2.0.13
   args: ^1.6.0
+  github_actions_toolkit: ^0.0.5
