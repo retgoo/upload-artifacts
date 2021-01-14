@@ -21,10 +21,14 @@ inputs:
     description: "Is root directory [-r]"
     required: false
     default: ""
+  shell:
+    description: "Default shell"
+    required: true
+    default: bash
 runs:
   using: "composite"
   steps:
     - run: dart pub get
-      shell: bash
+      shell: ${{ inputs.shell }}
     - run: dart bin/deploy.dart ${{ inputs.id }} ${{ inputs.zip }} ${{ inputs.output }} ${{ inputs.root }} ${{ inputs.path }}
-      shell: bash
+      shell: ${{ inputs.shell }}
