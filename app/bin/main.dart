@@ -41,11 +41,11 @@ void main(List<String> args) async {
   }
 
   final dio = Dio(
-    BaseOptions(baseUrl: 'https://api.storage.retgoo.id/share/'),
+    BaseOptions(baseUrl: 'https://api.storage.retgoo.id/'),
   );
 
   final response = await dio.post(
-    id.value,
+    (id.value?.isEmpty ?? true) ? 'share' : 'share/${id.value}',
     data: FormData.fromMap(
       {
         'file': await MultipartFile.fromFile(data.absolute.path),
@@ -54,6 +54,7 @@ void main(List<String> args) async {
   );
 
   if (response.statusCode == 200 && response.data['success']) {
-    logger.info('artifact uploaded');
+    gaction.setOutput('fileId', response.data['id']);
+    logger.info('artifact uploaded: ${response.data['id']}');
   }
 }
