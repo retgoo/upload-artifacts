@@ -26,5 +26,5 @@ runs:
   steps:
     - run: dart pub get
       shell: bash
-    - run: dart bin/deploy.dart ${{ inputs.id }} ${{ inputs.zip }} ${{ inputs.output }} ${{ inputs.path }}
+    - run: dart bin/deploy.dart ${{ inputs.id }} ${{ inputs.zip }} ${{ inputs.output }} ${{ inputs.root }} ${{ inputs.path }}
       shell: bash
