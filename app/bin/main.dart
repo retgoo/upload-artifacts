@@ -24,18 +24,20 @@ void main(List<String> args) async {
   final id = gaction.Input('id', isRequired: true, canBeEmpty: false);
   logger.info('id: ${id.value}');
 
+  final srcPath = path.value;
+
   File data;
   if (zip.value == 'true') {
     print('Zipping data');
     final encoder = ZipFileEncoder();
     encoder.create(output.value);
-    encoder.addDirectory(Directory(path.value),
+    encoder.addDirectory(Directory(srcPath),
         includeDirName: root.value == 'true');
     encoder.close();
 
     data = File(output.value);
   } else {
-    data = File(path.value);
+    data = File(srcPath);
   }
 
   final dio = Dio(
