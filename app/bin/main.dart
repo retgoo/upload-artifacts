@@ -26,7 +26,7 @@ void main(List<String> args) async {
 
   File data;
   if (zip.value == 'true') {
-    print("Zipping data");
+    print('Zipping data');
     final encoder = ZipFileEncoder();
     encoder.create(output.value);
     encoder.addDirectory(Directory(path.value),
@@ -39,19 +39,19 @@ void main(List<String> args) async {
   }
 
   final dio = Dio(
-    BaseOptions(baseUrl: "https://api.storage.retgoo.id/share/"),
+    BaseOptions(baseUrl: 'https://api.storage.retgoo.id/share/'),
   );
 
   final response = await dio.post(
     id.value,
     data: FormData.fromMap(
       {
-        "file": await MultipartFile.fromFile(data.absolute.path),
+        'file': await MultipartFile.fromFile(data.absolute.path),
       },
     ),
   );
 
-  if (response.statusCode == 200) {
-    logger.info("artifact uploaded");
+  if (response.statusCode == 200 && response.data['success']) {
+    logger.info('artifact uploaded');
   }
 }
