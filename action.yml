@@ -1,0 +1,27 @@
+name: "Upload Artifact"
+description: "Upload artifact to NAS"
+inputs:
+  id:
+    description: "ID of file"
+    required: false
+    default: ""
+  path:
+    description: "Path of file or directory"
+    required: true
+    default: ""
+  zip:
+    description: "Zip data"
+    required: false
+    default: ""
+  output:
+    description: "Output zip name"
+    required: false
+    default: "artifact.zip"
+
+runs:
+  using: "composite"
+  steps:
+    - run: dart pub get
+      shell: bash
+    - run: dart bin/deploy.dart ${{ inputs.id }} ${{ inputs.zip }} ${{ inputs.output }} ${{ inputs.path }}
+      shell: bash
