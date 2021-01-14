@@ -2,7 +2,7 @@ name: "Upload Artifact"
 description: "Upload artifact to NAS"
 inputs:
   id:
-    description: "ID of file"
+    description: "ID of file [--id value]"
     required: false
     default: ""
   path:
@@ -10,14 +10,17 @@ inputs:
     required: true
     default: ""
   zip:
-    description: "Zip data"
+    description: "Zip data [-z]"
     required: false
     default: ""
   output:
-    description: "Output zip name"
+    description: "Output zip name [-o value]"
     required: false
-    default: "artifact.zip"
-
+    default: "-o artifact.zip"
+  root:
+    description: "Is root directory [-r]"
+    required: false
+    default: ""
 runs:
   using: "composite"
   steps:
