@@ -23,6 +23,6 @@ inputs:
     default: ""
 runs:
   using: "node12"
-  pre: "scripts/setup.js" # Delete this line to not run the setup script
+  #pre: "scripts/setup.js" # Delete this line to not run the setup script
   main: "scripts/index.js"
-  post: "scripts/cleanup.js" # Delete this line to not run the cleanup script
+  #post: "scripts/cleanup.js" # Delete this line to not run the cleanup script
