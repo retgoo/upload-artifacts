@@ -42,7 +42,7 @@ void main(List<String> args) async {
   }
 
   final dio = Dio(
-    BaseOptions(baseUrl: 'https://api.storage.retgoo.id/'),
+    BaseOptions(baseUrl: 'https://api-storage.retgoo.id/'),
   );
 
   final response = await dio.post(
